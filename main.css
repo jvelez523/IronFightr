@@ -1,0 +1,26 @@
+body {
+  background-image: url("Assets/PixelBG.gif");
+  background-size: cover;
+  margin-bottom: 0px;
+  height: 1000px;
+}
+
+canvas {
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    width: 800px;
+    height: 600px;
+    /*position: absolute;*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*padding: 0 70px*/
+    box-shadow: 0px 0px 10px 3px;
+}
+
+.Header {
+  display: flex;
+  justify-content: center;
+}
