@@ -24,8 +24,8 @@ var game = new Phaser.Game(config);
 function preload() {
   //Loading Game Assets
   this.load.image("background", "Assets/SkyBG.png");
-  this.load.image("platform", "Assets/platform.png");
-  this.load.image("ground", "Assets/ground.png");
+  this.load.image("platform", "Assets/platform copy.png");
+  this.load.image("ground", "Assets/Floor.png");
   this.load.spritesheet(
     "dino1",
     "Assets/DinoSprites - vita.png",
@@ -38,6 +38,7 @@ function preload() {
   );
   this.load.image("bacon", "Assets/Food/Bacon.png");
   this.load.image("beer", "Assets/Food/Beer.png");
+
 }
 
 //Creating Game Assets
@@ -48,13 +49,13 @@ function create() {
 
   platforms = this.physics.add.staticGroup();
   platforms
-    .create(400, 600, "platform")
-    .setScale(2)
+    .create(400, 600, "ground")
+    .setScale(7/8)
     .refreshBody();
 
-  platforms.create(460, 420, "platform");
-  platforms.create(50, 260, "platform");
-  platforms.create(750, 260, "platform");
+  platforms.create(398, 350, "platform").setScale(3/4).refreshBody();
+  platforms.create(50, 190, "platform").setScale(3/4).refreshBody();
+  platforms.create(750, 190, "platform").setScale(3/4).refreshBody();
 
   //Creating of Player 1 and 2 Sprite
   player1 = this.physics.add.sprite(100, 350, "dino1").setScale(2);
@@ -81,21 +82,23 @@ function create() {
 
     score += 10; //Every time bacon collected add 10 to score
     scoreText.setText("Score: " + score);
+
+
   }
 
-  beer = this.physics.add.group({
+  beers = this.physics.add.group({
     key: "beer",
     repeat: 2,
     setXY: { x: 450, y: 0, stepX: 150 }
   });
   //Set bounce for beer pieces
-  beer.children.iterate(function(child) {
+  beers.children.iterate(function(child) {
     child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
     child.setScale(2);
   });
 
-  this.physics.add.collider(beer, platforms); //Make sure prize does not collide with platform
-  this.physics.add.overlap(player2, beer, collectBeer, null, this); //If player overlaps with beer, run function collectBacon
+  this.physics.add.collider(beers, platforms); //Make sure prize does not collide with platform
+  this.physics.add.overlap(player2, beers, collectBeer, null, this); //If player overlaps with beer, run function collectBacon
 
   //Make beer dissappear on collection
   function collectBeer(player2, beer) {
@@ -103,6 +106,16 @@ function create() {
 
     score2 += 10; //Every time bacon collected add 10 to score
     score2Text.setText("Score: " + score2);
+
+    if (beers.countActive() == 0){
+      beers.children.iterate(function (child) {
+        var xc = Math.random() * 700
+        var xy = Math.random()*600
+        console.log(xc)
+        child.enableBody(true, xc,0, true, true);
+
+    })
+    }
   }
 
   //Player 1 and 2 Phjysics
