@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link rel="stylesheet" href="main.css" />
     <script src="//cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.js"></script>
     <script src="Ironfight.js"></script>
@@ -12,6 +14,51 @@
   <body>
     <section class="Header">
       <img src="Assets/pixel-speech-bubble.gif">
+    </section>
+    <section id="Instructions">
+      <div class="title">
+      <h1>Instructions</h1>
+      </div>
+      <div class="instructions">
+      <p>Oh No! It's raining bacon and beer! Our Dinos are both thirsty
+        and hungry, and cannot wait! Read the rules below to learn how to
+        guide our dinos around the stage, and help save them from Extinction!
+      </p>
+      </div>
+      <div class="rules">
+        <div class="vern">
+          <h2>Vern:</h2>
+          <img class="dino" src="Assets/DinoSprites_vita.gif">
+          <p>This is <b>Vern</b>. Vern likes <b>Bacon</b>.
+            He also like long walks on the beach. Vern does not
+            like asteroids.
+          </p>
+          <ul>
+              <li>UP: &#8593;</li>
+              <li>DOWN: &darr;</li>
+              <li>LEFT: &larr;</li>
+              <li>RIGHT: &rarr;</li>
+            </ul>
+        </div>
+        <div class="Jules">
+          <h2>Jules:</h2>
+          <img class="dino" src="Assets/DinoSprites_mort.gif">
+          <p>This is <b>Jules</b>. Jules likes <b>Beer</b>
+          Jules is a vegeterian(Hence the beer over bacon).
+          Jules prefers a a nice IPA, but is not picky when it comes
+          to beer types.
+          </p>
+          <ul>
+            <li>UP: W</li>
+            <li>DOWN: S</li>
+            <li>LEFT: A</li>
+            <li>RIGHT: D</li>
+          </ul>
+        </div>
+      </div>
+      <div class="startbutton">
+          <a id="start"><img src="Assets/startbutton.png"></a>
+        </div>
     </section>
     <div id="canvas"></div>
   </body>

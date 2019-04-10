@@ -1,3 +1,14 @@
+//Page Code
+$(document).ready(function () {
+  $("#start").click(function () {
+      $("canvas").delay(500).fadeIn();
+      $("#Instructions").toggle();
+      $('html, body').animate({scrollTop:80}, '300');
+  });
+});
+
+//Game Code
+
 var config = {
   type: Phaser.CANVAS,
   width: 800,
@@ -36,63 +47,70 @@ function preload() {
     "Assets/DinoSprites - mort.png",
     { frameWidth: 23, frameHeight: 23 } //Set width and height for frame
   );
+  this.load.spritesheet(
+    "bullet",
+    "Assets/16_sunburn_spritesheet.png",
+    { frameWidth: 100, frameHeight: 100 } //Set width and height for frame
+  );
   this.load.image("bacon", "Assets/Food/Bacon.png");
   this.load.image("beer", "Assets/Food/Beer.png");
-
+  this.load.image("asteroid", "Assets/asteroid.png");
+  this.load.audio("main", "Assets/02 - Getting Started.mp3");
+  this.load.atlas('flares', 'Assets/flares.png', 'Assets/flares.json');
 }
 
-//Creating Game Assets
-function create() {
+
+function create() { //Creating Game Assets
   //Adding background and platforms as STATIC Objects
+  var particles = this.add.particles('flares');
   this.add.image(300, 290, "background");
-  //this.add.image(400, 470, 'ground').setScale(1/2);
 
   platforms = this.physics.add.staticGroup();
   platforms
     .create(400, 600, "ground")
-    .setScale(7/8)
+    .setScale(7 / 8)
     .refreshBody();
 
-  platforms.create(398, 350, "platform").setScale(3/4).refreshBody();
-  platforms.create(50, 190, "platform").setScale(3/4).refreshBody();
-  platforms.create(750, 190, "platform").setScale(3/4).refreshBody();
+  platforms
+    .create(398, 350, "platform")
+    .setScale(3 / 4)
+    .refreshBody();
+  platforms
+    .create(50, 190, "platform")
+    .setScale(3 / 4)
+    .refreshBody();
+  platforms
+    .create(750, 190, "platform")
+    .setScale(3 / 4)
+    .refreshBody();
 
   //Creating of Player 1 and 2 Sprite
   player1 = this.physics.add.sprite(100, 350, "dino1").setScale(2);
   player2 = this.physics.add.sprite(690, 350, "dino2").setScale(2);
 
-  //Creating Prizes
-  bacon = this.physics.add.group({
+  
+  bacons = this.physics.add.group({ //Create Bacon
     key: "bacon",
     repeat: 2,
     setXY: { x: 25, y: 0, stepX: 150 }
   });
-  //Set bounce for bacon pieces
-  bacon.children.iterate(function(child) {
+
+  bacons.children.iterate(function(child) { //Set bounce for bacon pieces
     child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
     child.setScale(2);
   });
 
-  this.physics.add.collider(bacon, platforms); //Make sure prize does not collide with platform
-  this.physics.add.overlap(player1, bacon, collectBacon, null, this); //If player overlaps with bacon, run function collectBacon
-
-  //Make bacon dissappear on collection
-  function collectBacon(player1, bacon) {
-    bacon.disableBody(true, true);
-
-    score += 10; //Every time bacon collected add 10 to score
-    scoreText.setText("Score: " + score);
+  this.physics.add.collider(bacons, platforms); //Make sure prize does not collide with platform
+  this.physics.add.overlap(player1, bacons, collectBacon, null, this); //If player overlaps with bacon, run function collectBacon
 
 
-  }
-
-  beers = this.physics.add.group({
+  beers = this.physics.add.group({ //Create Beer
     key: "beer",
     repeat: 2,
     setXY: { x: 450, y: 0, stepX: 150 }
   });
-  //Set bounce for beer pieces
-  beers.children.iterate(function(child) {
+  
+  beers.children.iterate(function(child) { //Set bounce for beer pieces
     child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
     child.setScale(2);
   });
@@ -100,25 +118,116 @@ function create() {
   this.physics.add.collider(beers, platforms); //Make sure prize does not collide with platform
   this.physics.add.overlap(player2, beers, collectBeer, null, this); //If player overlaps with beer, run function collectBacon
 
-  //Make beer dissappear on collection
-  function collectBeer(player2, beer) {
+  //Setting Score
+  //Creating variables to collect score for collecting items
+  var score = 0;
+  var scoreText;
+  var score2 = 0;
+  var score2Text;
+  
+  scoreText = this.add.text(16, 16, "P1 score: 0", {
+    fontSize: "32px",
+    fill: "#000"
+  });
+  score2Text = this.add.text(500, 16, "P2 score: 0", {
+    fontSize: "32px",
+    fill: "#000"
+  });
+
+  function collectBacon(player1, bacon) { //Make bacon dissappear on collection
+    bacon.disableBody(true, true);
+
+    score += 10; //Every time bacon collected add 10 to score
+    scoreText.setText("Score: " + score);
+
+    if (bacons.countActive() == 0) {
+      bacons.children.iterate(function(child) {
+        var xc = Math.random() * 700;
+        //console.log(xc);
+        child.enableBody(true, xc, 0, true, true);
+      });
+      var x =
+        player1.x < 400
+          ? Phaser.Math.Between(400, 800)
+          : Phaser.Math.Between(0, 400);
+
+      var bomb = asteroids.create(x, 16, "asteroid").setScale(1 / 30);
+      bomb.setBounce(1);
+      bomb.setCollideWorldBounds(true);
+      bomb.setVelocity(Phaser.Math.Between(-200, 200), 10);
+    }
+    if (score == 100){
+      console.log("YIPEEE")
+      this.physics.pause();
+      scoreText.setText("Player 1 has Won!");
+      score2Text.setText("Player 2 Lost");
+    }
+  }
+
+  
+  function collectBeer(player2, beer) { //Make beer dissappear on collection
     beer.disableBody(true, true);
 
     score2 += 10; //Every time bacon collected add 10 to score
     score2Text.setText("Score: " + score2);
 
-    if (beers.countActive() == 0){
-      beers.children.iterate(function (child) {
-        var xc = Math.random() * 700
-        var xy = Math.random()*600
-        console.log(xc)
-        child.enableBody(true, xc,0, true, true);
+    if (beers.countActive() == 0) {
+      beers.children.iterate(function(child) {
+        var xc = Math.random() * 700;
+        console.log(xc);
+        child.enableBody(true, xc, 0, true, true);
+      });
 
-    })
+      var x =
+        player2.x < 400
+          ? Phaser.Math.Between(400, 800)
+          : Phaser.Math.Between(0, 400);
+
+      var bomb = asteroids.create(x, 16, "asteroid").setScale(1 / 30);
+      bomb.setBounce(1);
+      bomb.setCollideWorldBounds(true);
+      bomb.setVelocity(Phaser.Math.Between(-200, 200), 10);
+    }
+    if (score2 == 100){
+      console.log("YIPEEE")
+      this.physics.pause();
+      scoreText.setText("Player 1 has lost");
+      score2Text.setText("Player 2 Won!");
     }
   }
+  
+  asteroids = this.physics.add.group(); //Add Asteroids
 
-  //Player 1 and 2 Phjysics
+  this.physics.add.collider(asteroids, platforms); //Make sure asteroids do not go through platforms
+
+  this.physics.add.collider(player1, asteroids, hitAST, null, this); //When player1 hits asteroid
+  this.physics.add.collider(player2, asteroids, hitAST2, null, this);//when player2 hits asteroid
+
+  function hitAST(player1, asteroids) {
+    //this.physics.pause();
+    //this.physics.pause();
+    player1.anims.play("turn");
+    //gameOver = true;
+    score = score - 10
+    scoreText.setText("Score: " + score);
+    if (score < 0) {
+      score = 0;
+      scoreText.setText("Score: " + score);
+    }
+  }
+  function hitAST2(player2, asteroids) {
+    //this.physics.pause();
+    //this.physics.pause();
+    player2.anims.play("turn");
+    //gameOver = true;
+    score2 -= 10
+    score2Text.setText("Score: " + score2);
+    if (score2 < 0) {
+      score2 = 0;
+      score2Text.setText("Score: " + score2);
+    }
+  }
+  //Player 1 and 2 Physics
   player1.setBounce(0.15); //Bounce when hitting ground
   player1.setCollideWorldBounds(true); //setting boundaries for player
   player2.setBounce(0.15); //Bounce when hitting ground
@@ -150,7 +259,6 @@ function create() {
     frameRate: 12,
     repeat: -1
   });
-
   this.anims.create({
     key: "turn2",
     frames: [{ key: "dino2", frame: 1 }],
@@ -161,21 +269,7 @@ function create() {
   this.physics.add.collider(player2, platforms);
   cursors = this.input.keyboard.createCursorKeys();
   player1.body.setGravityY(300);
-
-  //Creating variables to collect score for collecting items
-  var score = 0;
-  var scoreText;
-  var score2 = 0;
-  var score2Text;
-
-  scoreText = this.add.text(16, 16, "P1 score: 0", {
-    fontSize: "32px",
-    fill: "#000"
-  });
-  score2Text = this.add.text(500, 16, "P2 score: 0", {
-    fontSize: "32px",
-    fill: "#000"
-  });
+  player2.body.setGravityY(300);
 
   //Plaeyer 2 key settings...
 
@@ -186,6 +280,11 @@ function create() {
   leftButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
 
   rightButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+
+  //Music
+  this.bgMusic = this.sound.add("main", { volume: 0.5, loop: true });
+  this.bgMusic.play();
+
 }
 
 //Executing actions
@@ -241,5 +340,8 @@ function update() {
 
   if (upButton.isDown && player2.body.touching.down) {
     player2.setVelocityY(-450);
+  }
+  if (downButton.isDown) {
+    player2.setVelocityY(600);
   }
 }

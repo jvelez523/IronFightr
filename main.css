@@ -1,8 +1,11 @@
 body {
-  background-image: url("Assets/PixelBG.gif");
+  background-image :linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),url(Assets/PixelBG.gif);
   background-size: cover;
   margin-bottom: 0px;
   height: 1000px;
+  font-family: 'VT323', monospace;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 canvas {
@@ -19,9 +22,100 @@ canvas {
     /*padding: 0 70px*/
     box-shadow: 0px 0px 10px 3px;
     border-radius: 25px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+    display: none;
+    transition: display 2s;
 }
 
 .Header {
   display: flex;
   justify-content: center;
+}
+
+#Instructions {
+  display: flex;
+  justify-content: center;
+  color: white;
+  flex-wrap: wrap;
+}
+
+h1 {
+  font-size: 72px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h2 {
+  display: flex;
+    font-size: 48px;
+}
+
+p {
+  font-size: 48px;
+  text-align: center;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.instructions {
+  display: flex;
+  width: 60%;
+  justify-content: center;
+}
+
+.rules {
+  display: flex;
+    width: 70%;
+    justify-content: center;
+}
+
+.dino {
+  height: 100px;
+}
+
+.Jules {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.vern {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.vern h2, .Jules h2 {
+  padding-right: 40px;
+}
+
+.vern p, .Jules p {
+  padding: 20px
+}
+
+ul {
+  font-size: 48px;
+}
+
+.Jules ul {
+  margin-top: 0px;
+}
+
+.startbutton img {
+    width: 300px;
+    height: 100px;
+}
+
+.startbutton {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 200px;
 }
