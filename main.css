@@ -1,3 +1,4 @@
+
 body {
   background-image :linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),url(Assets/PixelBG.gif);
   background-size: cover;
@@ -118,4 +119,34 @@ ul {
   width: 100%;
   justify-content: center;
   height: 200px;
+}
+
+#p1win {
+  display: none;
+  color: white
+}
+
+#p2win {
+  display: none;
+  color: white;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.content h1 {
+  width: 100%;
+}
+
+.dinowin {
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+}
+
+.restartbtn {
+  width: 300px;
+  height: 100px;
 }

@@ -5,8 +5,11 @@ $(document).ready(function () {
       $("#Instructions").toggle();
       $('html, body').animate({scrollTop:80}, '300');
   });
+  $("#p1button, #p2button").click(function () {
+    console.log("Button Clicked")
+    location.reload();
+  });
 });
-
 //Game Code
 
 var config = {
@@ -61,8 +64,16 @@ function preload() {
 
 
 function create() { //Creating Game Assets
+
+  $("#p1button").click(function () {
+    //this.scene.restart();
+    console.log("Button Clicked")
+    $("#p1win").toggle();
+    $("canvas").delay(500).fadeIn();
+    $('html, body').animate({scrollTop:80}, '300');
+  });
+
   //Adding background and platforms as STATIC Objects
-  var particles = this.add.particles('flares');
   this.add.image(300, 290, "background");
 
   platforms = this.physics.add.staticGroup();
@@ -161,6 +172,9 @@ function create() { //Creating Game Assets
       this.physics.pause();
       scoreText.setText("Player 1 has Won!");
       score2Text.setText("Player 2 Lost");
+      $("canvas").delay(500).fadeOut();
+      $("#p1win").delay(800).fadeIn();
+      $('html, body').animate({scrollTop:0}, '500');
     }
   }
 
@@ -193,6 +207,9 @@ function create() { //Creating Game Assets
       this.physics.pause();
       scoreText.setText("Player 1 has lost");
       score2Text.setText("Player 2 Won!");
+      $("canvas").delay(500).fadeOut();
+      $("#p2win").delay(800).fadeIn();
+      $('html, body').animate({scrollTop:0}, '500');
     }
   }
   

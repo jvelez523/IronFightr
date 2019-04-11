@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Beers & Bacon</title>
+    <link rel="shortcut icon" type="image/png" href="Assets/favicon.ico"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <link rel="stylesheet" href="main.css" />
@@ -59,6 +60,26 @@
       <div class="startbutton">
           <a id="start"><img src="Assets/startbutton.png"></a>
         </div>
+    </section>
+    <section id="p1win">
+      <div class="content">
+      <h1>Congratulations! Player 1 has won</h1>
+      <img class="dinowin" src="Assets/DinoSprites_vita.gif">
+      <p>You have conquered over your beer loving friend, and have become the dominant
+        carnivore! 
+      </p>
+      <a id="p1button"><img class="restartbtn" src="Assets/restart.png"></a>
+      </div>
+    </section>
+    <section id="p2win">
+        <div class="content">
+            <h1>Congratulations! Player 2 has won</h1>
+            <img class="dinowin" src="Assets/DinoSprites_mort.gif">
+            <p>You have conquered over your bacon loving friend, and have become the dominant
+              carnivore! 
+            </p>
+            <img class="restartbtn" id="p2button" src="Assets/restart.png">
+            </div>
     </section>
     <div id="canvas"></div>
   </body>
