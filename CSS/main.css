@@ -1,6 +1,6 @@
 
 body {
-  background-image :linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),url(Assets/PixelBG.gif);
+  background-image :linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45) ),url(/Assets/PixelBG.gif);
   background-size: cover;
   margin-bottom: 0px;
   height: 1000px;

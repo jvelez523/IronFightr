@@ -1,3 +1,4 @@
+
 //Page Code
 $(document).ready(function () {
   $("#start").click(function () {
@@ -60,6 +61,7 @@ function preload() {
   this.load.image("asteroid", "Assets/asteroid.png");
   this.load.audio("main", "Assets/02 - Getting Started.mp3");
   this.load.atlas('flares', 'Assets/flares.png', 'Assets/flares.json');
+
 }
 
 
