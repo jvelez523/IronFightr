@@ -172,6 +172,9 @@ function create() { //Creating Game Assets
       this.physics.pause();
       scoreText.setText("Player 1 has Won!");
       score2Text.setText("Player 2 Lost");
+      this.time.delayedCall(350, function() {
+        this.cameras.main.fade(250);
+      }, [], this);
       $("canvas").delay(500).fadeOut();
       $("#p1win").delay(800).fadeIn();
       $('html, body').animate({scrollTop:0}, '500');
@@ -207,6 +210,9 @@ function create() { //Creating Game Assets
       this.physics.pause();
       scoreText.setText("Player 1 has lost");
       score2Text.setText("Player 2 Won!");
+      this.time.delayedCall(350, function() {
+        this.cameras.main.fade(250);
+      }, [], this);
       $("canvas").delay(500).fadeOut();
       $("#p2win").delay(800).fadeIn();
       $('html, body').animate({scrollTop:0}, '500');
@@ -231,6 +237,7 @@ function create() { //Creating Game Assets
       score = 0;
       scoreText.setText("Score: " + score);
     }
+    this.cameras.main.shake(50);
   }
   function hitAST2(player2, asteroids) {
     //this.physics.pause();
@@ -243,6 +250,7 @@ function create() { //Creating Game Assets
       score2 = 0;
       score2Text.setText("Score: " + score2);
     }
+    this.cameras.main.shake(50);
   }
   //Player 1 and 2 Physics
   player1.setBounce(0.15); //Bounce when hitting ground
