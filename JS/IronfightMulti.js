@@ -2,7 +2,7 @@
 //Page Code
 $(document).ready(function () {
   $("#start").click(function () {
-      $("canvas").delay(500).fadeIn();
+      $("#multiplayer").delay(500).fadeIn();
       $("#Instructions").toggle();
       $('html, body').animate({scrollTop:80}, '300');
   });
@@ -16,10 +16,10 @@ $(document).ready(function () {
 var config = {
   type: Phaser.CANVAS,
   width: 800,
-  parent: "canvas",
+  parent: "multiplayer",
   height: 600,
   //parent: 'canvas',
-  canvas: document.getElementById("myCustomCanvas"),
+  canvas: document.getElementById("multiplayer"),
   physics: {
     default: "arcade",
     arcade: {
