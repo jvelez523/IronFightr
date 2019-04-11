@@ -61,28 +61,28 @@ var game = new Phaser.Game(config);
 
 function preload() {
   //Loading Game Assets
-  this.load.image("background", "/Assets/SkyBG.png");
-  this.load.image("platform", "/Assets/platform copy.png");
-  this.load.image("ground", "/Assets/Floor.png");
+  this.load.image("background", "../Assets/SkyBG.png");
+  this.load.image("platform", "../Assets/platform copy.png");
+  this.load.image("ground", "../Assets/Floor.png");
   this.load.spritesheet(
     "dino1single",
-    "/Assets/DinoSprites - vita.png",
+    "../Assets/DinoSprites - vita.png",
     { frameWidth: 23, frameHeight: 23 } //Set width and height for frame
   );
   this.load.spritesheet(
     "dino2",
-    "/Assets/DinoSprites - mort.png",
+    "../Assets/DinoSprites - mort.png",
     { frameWidth: 23, frameHeight: 23 } //Set width and height for frame
   );
   this.load.spritesheet(
     "bullet",
-    "/Assets/16_sunburn_spritesheet.png",
+    "../Assets/16_sunburn_spritesheet.png",
     { frameWidth: 100, frameHeight: 100 } //Set width and height for frame
   );
-  this.load.image("bacon", "/Assets/Food/Bacon.png");
-  this.load.image("beer", "/Assets/Food/Beer.png");
-  this.load.image("asteroid", "/Assets/asteroid.png");
-  this.load.audio("main", "/Assets/02 - Getting Started.mp3");
+  this.load.image("bacon", "../Assets/Food/Bacon.png");
+  this.load.image("beer", "../Assets/Food/Beer.png");
+  this.load.image("asteroid", "../Assets/asteroid.png");
+  this.load.audio("main", "../Assets/02 - Getting Started.mp3");
 
 }
 
