@@ -155,3 +155,8 @@ ul {
 #multiplayer {
   display: none;
 }
+
+#singplaygo {
+  color: white;
+  display: none;
+}

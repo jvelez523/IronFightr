@@ -1,41 +1,5 @@
-//<script>
-//    $(function () {
-//
-//        $("p").click(function () {
-//            $('script1').att('src').remove();
-//        });
-//    });
-//</script>
 
-
-// $("#timeattack").click(function () {
-//  $("singleplayscore").delay(500).fadeIn();
-//  $("#Instructions").toggle();
-//  $('html, body').animate({scrollTop:80}, '300');
-//  console.log("hello")
-//});
-//Page Code
-//$("#timeattack").click(function () {
-//  $("#multiplay").remove()
-//  console.log("hello")
-//});
-//$(document).ready(function () {
-//  $("#singleplay").click(function () {
-//      $("canvas").delay(500).fadeIn();
-//      $("#singleplayscore").toggle();
-//      $("#multiplayer").remove()
-//      $("#multiplay").remove()
-//      $("#Instructions").toggle();
-//      $('html, body').animate({scrollTop:80}, '300');
-//      console.log("hello")
-//  });
-//  $("#p1button, #p2button").click(function () {
-//    console.log("Button Clicked")
-//    location.reload();
-//  });
-//});
 //Game Code
-
 var config = {
   type: Phaser.CANVAS,
   width: 800,
@@ -262,6 +226,10 @@ function create() { //Creating Game Assets
       scoreText.setText("Score: " + score);
     }
     this.cameras.main.shake(50);
+    $("canvas").delay(500).fadeOut();
+    $("#singplaygo").delay(800).fadeIn();
+    $('html, body').animate({scrollTop:0}, '500');
+    $(".spscore").html(score);
   }
   //function hitAST2(player2, asteroids) {
   //  //this.physics.pause();
