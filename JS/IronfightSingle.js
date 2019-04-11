@@ -219,7 +219,6 @@ function create() { //Creating Game Assets
     this.physics.pause();
     player3.anims.play("turn");
     //gameOver = true;
-    score = score - 10
     scoreText.setText("Score: " + score);
     if (score < 0) {
       score = 0;
