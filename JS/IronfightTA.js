@@ -88,7 +88,7 @@ function create() {
         $("canvas")
           .delay(500)
           .fadeOut();
-        $("#timeattack")
+        $("#timeattacksurv")
           .delay(800)
           .fadeIn();
         $("html, body").animate({ scrollTop: 0 }, "500");
