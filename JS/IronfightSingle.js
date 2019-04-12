@@ -5,7 +5,6 @@ var config = {
   width: 800,
   parent: "singleplayscore",
   height: 600,
-  //parent: 'canvas',
   canvas: document.getElementById("singleplayscore"),
   physics: {
     default: "arcade",
@@ -85,7 +84,6 @@ function create() { //Creating Game Assets
 
   //Creating of Player 1 and 2 Sprite
   player3 = this.physics.add.sprite(100, 350, "dino1single").setScale(2);
-  //player2 = this.physics.add.sprite(690, 350, "dino2").setScale(2);
 
   
   bacons = this.physics.add.group({ //Create Bacon
@@ -121,17 +119,12 @@ function create() { //Creating Game Assets
   //Creating variables to collect score for collecting items
   var score = 0;
   var scoreText;
-  //var score2 = 0;
-  //var score2Text;
+
   
   scoreText = this.add.text(16, 16, "P1 score: 0", {
     fontSize: "32px",
     fill: "#000"
   });
-  //score2Text = this.add.text(500, 16, "P2 score: 0", {
-  //  fontSize: "32px",
-  //  fill: "#000"
-  //});
 
   function collectBacon(player3, bacon) { //Make bacon dissappear on collection
     bacon.disableBody(true, true);
@@ -155,18 +148,6 @@ function create() { //Creating Game Assets
       bomb.setCollideWorldBounds(true);
       bomb.setVelocity(Phaser.Math.Between(-200, 200), 10);
     }
-    //if (score == 100){
-    //  console.log("YIPEEE")
-    //  this.physics.pause();
-    //  scoreText.setText("Player 1 has Won!");
-    //  score2Text.setText("Player 2 Lost");
-    //  this.time.delayedCall(350, function() {
-    //    this.cameras.main.fade(250);
-    //  }, [], this);
-    //  $("canvas").delay(500).fadeOut();
-    //  $("#p1win").delay(800).fadeIn();
-    //  $('html, body').animate({scrollTop:0}, '500');
-    //}
   }
 
   
@@ -193,18 +174,6 @@ function create() { //Creating Game Assets
       bomb.setCollideWorldBounds(true);
       bomb.setVelocity(Phaser.Math.Between(-200, 200), 10);
     }
-    //if (score2 == 100){
-    //  console.log("YIPEEE")
-    //  this.physics.pause();
-    //  scoreText.setText("Player 1 has lost");
-    //  score2Text.setText("Player 2 Won!");
-    //  this.time.delayedCall(350, function() {
-    //    this.cameras.main.fade(250);
-    //  }, [], this);
-    //  $("canvas").delay(500).fadeOut();
-    //  $("#p2win").delay(800).fadeIn();
-    //  $('html, body').animate({scrollTop:0}, '500');
-    //}
   }
   
   asteroids = this.physics.add.group(); //Add Asteroids
@@ -212,13 +181,10 @@ function create() { //Creating Game Assets
   this.physics.add.collider(asteroids, platforms); //Make sure asteroids do not go through platforms
 
   this.physics.add.collider(player3, asteroids, hitAST, null, this); //When player1 hits asteroid
-  //this.physics.add.collider(player2, asteroids, hitAST2, null, this);//when player2 hits asteroid
 
   function hitAST(player3, asteroids) {
-    //this.physics.pause();
     this.physics.pause();
     player3.anims.play("turn");
-    //gameOver = true;
     scoreText.setText("Score: " + score);
     if (score < 0) {
       score = 0;
@@ -230,24 +196,10 @@ function create() { //Creating Game Assets
     $('html, body').animate({scrollTop:0}, '500');
     $(".spscore").html(score);
   }
-  //function hitAST2(player2, asteroids) {
-  //  //this.physics.pause();
-  //  //this.physics.pause();
-  //  player2.anims.play("turn");
-  //  //gameOver = true;
-  //  score2 -= 10
-  //  score2Text.setText("Score: " + score2);
-  //  if (score2 < 0) {
-  //    score2 = 0;
-  //    score2Text.setText("Score: " + score2);
-  //  }
-  //  this.cameras.main.shake(50);
-  //}
-  //Player 1 and 2 Physics
+  
   player3.setBounce(0.15); //Bounce when hitting ground
   player3.setCollideWorldBounds(true); //setting boundaries for player
-  //player2.setBounce(0.15); //Bounce when hitting ground
-  //player2.setCollideWorldBounds(true); //setting boundaries for player
+
 
   //Create animations
   this.anims.create({
@@ -282,25 +234,12 @@ function create() { //Creating Game Assets
   });
 
   this.physics.add.collider(player3, platforms);
-  //this.physics.add.collider(player2, platforms);
   cursors2 = this.input.keyboard.createCursorKeys();
   player3.body.setGravityY(300);
-  //player2.body.setGravityY(300);
 
-  ////Plaeyer 2 key settings...
-//
-  //upButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-//
-  //downButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-//
-  //leftButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-//
-  //rightButton = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-//
-  //Music
+
+ 
   this.bgMusic = this.sound.add("main", { volume: 0.5, loop: true });
-  //this.bgMusic.play();
-
 }
 
 //Executing actions
@@ -333,31 +272,4 @@ function update() {
     player3.setVelocityY(600);
   }
 
-  // Player2 controls
-//
-//  if (leftButton.isDown) {
-//    player2.setVelocityX(-160); //How fast player should move
-//
-//    player2.anims.play("walk2", true); //What animation to use
-//
-//    player2.flipX = true;
-//  } else if (rightButton.isDown) {
-//    //Reight Control
-//    player2.setVelocityX(160);
-//
-//    player2.anims.play("walk2", true);
-//
-//    player2.flipX = false;
-//  } else {
-//    player2.setVelocityX(0);
-//
-//    player2.anims.play("turn2");
-//  }
-//
-//  if (upButton.isDown && player2.body.touching.down) {
-//    player2.setVelocityY(-450);
-//  }
-//  if (downButton.isDown) {
-//    player2.setVelocityY(600);
-//  }
 }
