@@ -5,51 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Beers & Bacon</title>
-    <link rel="shortcut icon" type="image/png" href="Assets/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="Assets/favicon.ico" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=VT323"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="CSS/main.css" />
     <script src="//cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.js"></script>
     <!---<script id="single" src="JS/IronfightSingle.js"></script>-->
     <script id="multi" src="JS/IronfightMulti.js"></script>
-
   </head>
   <body>
     <section class="Header">
-      <img src="Assets/pixel-speech-bubble.gif">
+      <img src="Assets/pixel-speech-bubble.gif" />
     </section>
     <section id="Instructions">
       <div class="title">
-      <h1>Instructions</h1>
+        <h1>Instructions</h1>
       </div>
       <div class="instructions">
-      <p>Oh No! It's raining bacon and beer! Our Dinos are both thirsty
-        and hungry, and cannot wait! Read the rules below to learn how to
-        guide our dinos around the stage, and help save them from Extinction!
-      </p>
+        <p>
+          Oh No! It's raining bacon and beer! Our Dinos are both thirsty and
+          hungry, and cannot wait! Read the rules below to learn how to guide
+          our dinos around the stage, and help save them from Extinction!
+        </p>
       </div>
       <div class="rules">
         <div class="vern">
           <h2>Vern:</h2>
-          <img class="dino" src="Assets/DinoSprites_vita.gif">
-          <p>This is <b>Vern</b>. Vern likes <b>Bacon</b>.
-            He also like long walks on the beach. Vern does not
-            like asteroids.
+          <img class="dino" src="Assets/DinoSprites_vita.gif" />
+          <p>
+            This is <b>Vern</b>. Vern likes <b>Bacon</b>. He also like long
+            walks on the beach. Vern does not like asteroids.
           </p>
           <ul>
-              <li>UP: &#8593;</li>
-              <li>DOWN: &darr;</li>
-              <li>LEFT: &larr;</li>
-              <li>RIGHT: &rarr;</li>
-            </ul>
+            <li>UP: &#8593;</li>
+            <li>DOWN: &darr;</li>
+            <li>LEFT: &larr;</li>
+            <li>RIGHT: &rarr;</li>
+          </ul>
         </div>
         <div class="Jules">
           <h2>Jules:</h2>
-          <img class="dino" src="Assets/DinoSprites_mort.gif">
-          <p>This is <b>Jules</b>. Jules likes <b>Beer</b>.
-          Jules is a vegeterian(Hence the beer over bacon).
-          Jules prefers a nice IPA, but is not picky when it comes
-          to beer types.
+          <img class="dino" src="Assets/DinoSprites_mort.gif" />
+          <p>
+            This is <b>Jules</b>. Jules likes <b>Beer</b>. Jules is a
+            vegeterian(Hence the beer over bacon). Jules prefers a nice IPA, but
+            is not picky when it comes to beer types.
           </p>
           <ul>
             <li>UP: W</li>
@@ -60,31 +63,32 @@
         </div>
       </div>
       <div class="startbutton">
-          <a id="start"><img src="Assets/Multiplayer.png"></a>
-          <a href="Modes/singleplay.html"><img src="Assets/singplaybtn.png"></a>
-          <a href="Modes/timeattack.html" id="timeattack"><img src="Assets/timeattackbtn.png"></a>
-        </div>
-        
+        <a id="start"><img src="Assets/Multiplayer.png"/></a>
+        <a href="Modes/singleplay.html"><img src="Assets/singplaybtn.png"/></a>
+        <a href="Modes/timeattack.html" id="timeattack"><img src="Assets/timeattackbtn.png"/></a>
+      </div>
     </section>
     <section id="p1win">
       <div class="content">
-      <h1>Congratulations! Player 1 has won</h1>
-      <img class="dinowin" src="Assets/DinoSprites_vita.gif">
-      <p>You have conquered over your beer loving friend, and have become the dominant
-        carnivore! 
-      </p>
-      <a id="p1button"><img class="restartbtn" src="Assets/restart.png"></a>
+        <h1>Congratulations! Player 1 has won</h1>
+        <img class="dinowin" src="Assets/DinoSprites_vita.gif" />
+        <p>
+          You have conquered over your beer loving friend, and have become the
+          dominant carnivore!
+        </p>
+        <a id="p1button"><img class="restartbtn" src="Assets/restart.png"/></a>
       </div>
     </section>
     <section id="p2win">
-        <div class="content">
-            <h1>Congratulations! Player 2 has won</h1>
-            <img class="dinowin" src="Assets/DinoSprites_mort.gif">
-            <p>You have conquered over your bacon loving friend, and have become the dominant
-              carnivore! 
-            </p>
-            <img class="restartbtn" id="p2button" src="Assets/restart.png">
-            </div>
+      <div class="content">
+        <h1>Congratulations! Player 2 has won</h1>
+        <img class="dinowin" src="Assets/DinoSprites_mort.gif" />
+        <p>
+          You have conquered over your bacon loving friend, and have become the
+          dominant carnivore!
+        </p>
+        <img class="restartbtn" id="p2button" src="Assets/restart.png" />
+      </div>
     </section>
     <div id="multiplayer" class="multiplay"></div>
   </body>
