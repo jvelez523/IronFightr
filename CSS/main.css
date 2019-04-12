@@ -160,3 +160,13 @@ ul {
   color: white;
   display: none;
 }
+
+#timeattack {
+  display: none;
+  color: white;
+}
+
+#Asteroidhit {
+  display: none;
+  color: white;
+}
