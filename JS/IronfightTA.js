@@ -106,6 +106,10 @@ function create() {
       bomb.setBounce(1);
       bomb.setCollideWorldBounds(true);
       bomb.setVelocity(Phaser.Math.Between(-200, 200), 10);
+
+      if (hitAST(player3, asteroids)) {
+        return 0
+      }
     }, 1000);
   }
 
